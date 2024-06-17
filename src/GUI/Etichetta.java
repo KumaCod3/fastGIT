@@ -10,7 +10,7 @@ public class Etichetta extends JLabel{
 		setBackground(Est.scuro);
 		setFont(Est.plainFont);
 		setOpaque(false);
-		setBorder(Est.bordo);
+		setBorder(Est.bordoEt);
 		
 	}
 }

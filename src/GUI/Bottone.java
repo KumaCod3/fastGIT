@@ -1,4 +1,5 @@
 package GUI;
+import java.awt.Dimension;
 import java.awt.GridBagLayout;
 import javax.swing.JPanel;
 
@@ -13,9 +14,10 @@ public class Bottone extends JPanel{
 		setBorder(Est.bordo);
 		setBackground(Est.sfondo);
 
-		but.setMinimumSize(Est.piccoloMin);
-		but.setMaximumSize(Est.piccolo);
-		but.setPreferredSize(Est.piccolo);
+		Dimension dd=new Dimension(160, 60);
+		but.setMinimumSize(dd);
+		but.setMaximumSize(dd);
+		but.setPreferredSize(dd);
 		
 		add(but);
 	}
@@ -28,9 +30,10 @@ public class Bottone extends JPanel{
 		setBorder(Est.bordo);
 		setOpaque(false);
 
-		but.setMinimumSize(Est.grossoMin);
-		but.setMaximumSize(Est.grosso);
-		but.setPreferredSize(Est.grosso);
+		Dimension dd=new Dimension(260, 80);
+		but.setMinimumSize(dd);
+		but.setMaximumSize(dd);
+		but.setPreferredSize(dd);
 		
 		add(but);
 	}

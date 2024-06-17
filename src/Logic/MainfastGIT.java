@@ -6,17 +6,24 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
+
+import GUI.Home;
 
 public class MainfastGIT {
-	public static ArrayList<String> listaURList=new ArrayList<String>();
+	public static HashMap<String, String> listaURList=new HashMap<String, String>();
 	
 	
 	public static void main(String[] args) {
 		carica();
-		listaURList.add("prova 123");
+		Home home=new Home();
+		home.setVisible(true);
+		
+		
+		
+		
 		scarica();
-		System.out.println(listaURList);
 	}
 
 	public static void carica(){
@@ -28,7 +35,8 @@ public class MainfastGIT {
 			reader = new BufferedReader(fReader);
 			String line;
 			while ((line = reader.readLine()) != null){
-				listaURList.add(line);
+				String[] tp=line.split(",");
+				listaURList.put(tp[0],tp[1]);
 			}
 		}
 		catch (IOException e){
@@ -41,8 +49,8 @@ public class MainfastGIT {
 			FileWriter fWriter = new FileWriter("percorsi", false);
 			BufferedWriter writer = new BufferedWriter(fWriter);
 			
-			for (String stringa:listaURList){
-				writer.write(stringa+System.lineSeparator());
+			for (Entry<String, String> s:listaURList.entrySet()){
+				writer.write(s.getKey()+","+s.getValue()+System.lineSeparator());
 			}
 			writer.close();
 

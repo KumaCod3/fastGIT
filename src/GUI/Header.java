@@ -5,7 +5,6 @@ import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -20,7 +19,7 @@ public class Header extends JPanel {
 		pan.setOpaque(false);
 		add(pan);
 		JLabel tz=new JLabel();
-		tz.setText("Istituto Formativo Europeo ");
+		tz.setText("Powered by KumaCod3 :) ");
 		tz.setForeground(Color.WHITE);
 		tz.setOpaque(false);
 		add(tz);

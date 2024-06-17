@@ -4,14 +4,12 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.MediaTracker;
 import java.awt.Toolkit;
-
 import javax.swing.JPanel;
 
 public class HeadPanel extends JPanel{
-	
 	HeadPanel(){
 		super();
-		setPreferredSize(new Dimension(240, 40));
+		setPreferredSize(new Dimension(40, 40));
 		setOpaque(true);
 	}
 	public void paintComponent(Graphics g) {
@@ -19,7 +17,7 @@ public class HeadPanel extends JPanel{
 
 		Toolkit tk=Toolkit.getDefaultToolkit();
 		Image imgg=tk.getImage("logPN.png");
-		Image img = imgg.getScaledInstance( 220, 40,  java.awt.Image.SCALE_SMOOTH ) ;
+		Image img = imgg.getScaledInstance( 40, 40,  java.awt.Image.SCALE_SMOOTH ) ;
 		
 		MediaTracker mt = new MediaTracker(this);
 		mt.addImage(img,1);

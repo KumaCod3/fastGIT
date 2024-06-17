@@ -25,8 +25,8 @@ public class Est {
 	private static double he=height*0.8;
 	private static double he80=he/11.5;
 	private static double he30=he/31.0;
-	private static double wi190=wi/3.6;
-	private static double wi310=wi/2.2;
+	private static double wi190=wi/2;
+	private static double wi310=wi/2;
 	public static Dimension ful=new Dimension((int)width, (int)height);
 	public static Dimension standard=new Dimension((int)wi, (int)he);
 	public static Dimension piccolo=new Dimension((int)wi190,(int)he80);
@@ -35,7 +35,8 @@ public class Est {
 	public static Dimension grossoMin=new Dimension((int)(wi310/3),(int)(he80/3*2));
 	public static Dimension testa=new Dimension((int)wi, (int)he80);
 	public static Dimension jchoi=new Dimension((int)wi190,(int)he30);
-	public static Dimension err=new Dimension((int)wi310,(int)(he/2.5));
+	public static Dimension err=new Dimension((int)wi310,(int)(he/1.8));
+	public static Dimension bigErr=new Dimension((int)wi310,(int)(he));
 	public static int marginX=(int)((screenSize.getSize().getWidth()/2)-(standard.getSize().getWidth()/2));
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
 	public static int centPicX=(int)((screenSize.getSize().getWidth()/2)-wi190);
@@ -46,6 +47,7 @@ public class Est {
 	public static DateTimeFormatter simpDate= DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	
 	public static Border bordo= BorderFactory.createEmptyBorder(10,10,10,10);
+	public static Border bordoEt= BorderFactory.createEmptyBorder(25,10,0,10);
 	public static MatteBorder borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
 	public static Border borColHe= BorderFactory.createMatteBorder(4, 4, 0, 4, scuro);
 	
