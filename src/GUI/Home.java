@@ -72,8 +72,10 @@ public class Home extends Finestra{
 			btJPanel.setLayout(new FlowLayout());
 			Bottone spingi=new Bottone("PUSH");
 			spingi.but.addActionListener(new ActionListener() {
-			    public void actionPerformed(ActionEvent e) {
-			    	spingi(s.getValue(), commFormVuoto.ret);
+				public void actionPerformed(ActionEvent e) {
+					String tpString=spingi(s.getValue(), commFormVuoto.ret);
+					Avviso okAvviso=new Avviso(tpString);
+					okAvviso.setVisible(true);
 				}
 			});
 			btJPanel.add(spingi);
@@ -100,62 +102,57 @@ public class Home extends Finestra{
 		
 		Bottone aggiungi=new Bottone("ADD PROJECT",8);
 		aggiungi.but.addActionListener(new ActionListener() {
-		    public void actionPerformed(ActionEvent e) {
-		    	AddPjk addPrjk=new AddPjk();
+			public void actionPerformed(ActionEvent e) {
+				AddPjk addPrjk=new AddPjk();
 		    	addPrjk.setVisible(true);
 				setVisible(false);
 				dispose();
 			}
 		});
 		c.add("South", aggiungi);
-		
 		pack();
 	}
 	
-	private void spingi (String urla, String messaggio) {
-		// TODO
-		 try {
-			 System.out.println(urla);
-			 
-             Runtime rt = Runtime.getRuntime();
-             
-             setCurrentDirectory(urla);
-             Process pr = rt.exec("git add .");
-             BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-             String line=null;
-             while((line=input.readLine()) != null) {
-                 System.out.println(line);
-             }
-             
-             /*
-             pr =rt.exec("bla");
-             input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-             while((line=input.readLine()) != null) {
-            	 System.out.println(line);
-             }*/
-             //
-             pr = rt.exec("git commit -m "+messaggio);
-             input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-             while((line=input.readLine()) != null) {
-            	 System.out.println(line);
-             }
-             //
-             pr = rt.exec("git push");
-             input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
-             while((line=input.readLine()) != null) {
-            	 System.out.println(line);
-             }
-             //
-             
-
-             int exitVal = pr.waitFor();
-             System.out.println("Exited with error code "+exitVal);
-
-         } catch(Exception e) {
-             System.out.println(e.toString());
-             e.printStackTrace();
-         }
-		
+	private String spingi (String urla, String messaggio) {
+		String risString="";
+		try {
+			setCurrentDirectory(urla);
+			ProcessBuilder pb = new ProcessBuilder("C:/Program Files/Git/mingw64/libexec/git-core/git.exe","add",".");
+			pb.directory(new File(urla));
+			pb.redirectErrorStream(true);
+			Process p = pb.start();
+			BufferedReader input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			String line=null;
+			while((line=input.readLine()) != null) {
+				risString=risString+line+"\n";
+			}
+			//
+			pb = new ProcessBuilder("C:/Program Files/Git/mingw64/libexec/git-core/git.exe","commit","-m",messaggio);
+			pb.directory(new File(urla));
+			pb.redirectErrorStream(true);
+			p = pb.start();
+			input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			line=null;
+			while((line=input.readLine()) != null) {
+				risString=risString+line+"\n";
+			}
+			//
+			pb = new ProcessBuilder("C:/Program Files/Git/mingw64/libexec/git-core/git.exe","push");
+			pb.directory(new File(urla));
+			pb.redirectErrorStream(true);
+			p = pb.start();
+			input = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			line=null;
+			while((line=input.readLine()) != null) {
+				risString=risString+line+"\n";
+				}
+			//
+			int exitVal = p.waitFor();
+			} catch(Exception e) {
+				risString=e.toString();
+				e.printStackTrace();
+			}
+		return risString;
 	}
 	
 	private void cancella(String k) {
@@ -164,15 +161,11 @@ public class Home extends Finestra{
 	}
 	public static boolean setCurrentDirectory(String directory_name)
     {
-        boolean result = false;  // Boolean indicating whether directory was set
-        File    directory;       // Desired current working directory
-
-        directory = new File(directory_name).getAbsoluteFile();
-        if (directory.exists() || directory.mkdirs())
-        {
-            result = (System.setProperty("user.dir", directory.getAbsolutePath()) != null);
-        }
-
-        return result;
-    }
+		boolean result = false;  // Boolean indicating whether directory was set
+		File directory = new File(directory_name).getAbsoluteFile();
+		if (directory.exists() || directory.mkdirs()){
+			result = (System.setProperty("user.dir", directory.getAbsolutePath()) != null);
+		}
+		return result;
+	}
 }

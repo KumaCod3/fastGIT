@@ -21,7 +21,6 @@ public class Finestra extends Frame {
 		
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		setLocation(Est.marginX, Est.marginY);
-//		setPreferredSize(Est.err);
 		setMinimumSize(Est.err);
 		setMaximumSize(Est.bigErr);
 		setBackground(Est.sfondo);

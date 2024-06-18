@@ -51,6 +51,7 @@ public class Est {
 	public static Border bordoEt= BorderFactory.createEmptyBorder(25,10,0,10);
 	public static MatteBorder borCol= BorderFactory.createMatteBorder(0, 4, 4, 4, scuro);
 	public static Border borColHe= BorderFactory.createMatteBorder(4, 4, 0, 4, scuro);
+	public static Border borColTut= BorderFactory.createMatteBorder(4, 4, 4, 4, scuro);
 	
 	public static void showFont() {
 		System.out.println("To Know the available font family names"); 
