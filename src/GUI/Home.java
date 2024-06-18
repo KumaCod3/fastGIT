@@ -3,6 +3,9 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.InputStreamReader;
 import java.util.Map.Entry;
 
 import javax.swing.JPanel;
@@ -70,7 +73,7 @@ public class Home extends Finestra{
 			Bottone spingi=new Bottone("PUSH");
 			spingi.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	spingi(s.getValue());
+			    	spingi(s.getValue(), commFormVuoto.ret);
 				}
 			});
 			btJPanel.add(spingi);
@@ -109,8 +112,47 @@ public class Home extends Finestra{
 		pack();
 	}
 	
-	private void spingi (String urla) {
+	private void spingi (String urla, String messaggio) {
 		// TODO
+		 try {
+             Runtime rt = Runtime.getRuntime();
+             
+             setCurrentDirectory(urla);
+             Process pr = rt.exec("git add .");
+    //         Process pr = rt.exec("cd /d "+urla);
+             BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+             String line=null;
+      /*       while((line=input.readLine()) != null) {
+                 System.out.println(line);
+             }
+             */
+             
+             input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+             while((line=input.readLine()) != null) {
+            	 System.out.println(line);
+             }
+             //
+             pr = rt.exec("git commit -m "+messaggio);
+             input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+             while((line=input.readLine()) != null) {
+            	 System.out.println(line);
+             }
+             //
+             pr = rt.exec("git push");
+             input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
+             while((line=input.readLine()) != null) {
+            	 System.out.println(line);
+             }
+             //
+             
+
+             int exitVal = pr.waitFor();
+             System.out.println("Exited with error code "+exitVal);
+
+         } catch(Exception e) {
+             System.out.println(e.toString());
+             e.printStackTrace();
+         }
 		
 	}
 	
@@ -118,4 +160,17 @@ public class Home extends Finestra{
 		MainfastGIT.listaURList.remove(k);
 		MainfastGIT.scarica();
 	}
+	public static boolean setCurrentDirectory(String directory_name)
+    {
+        boolean result = false;  // Boolean indicating whether directory was set
+        File    directory;       // Desired current working directory
+
+        directory = new File(directory_name).getAbsoluteFile();
+        if (directory.exists() || directory.mkdirs())
+        {
+            result = (System.setProperty("user.dir", directory.getAbsolutePath()) != null);
+        }
+
+        return result;
+    }
 }
