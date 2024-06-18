@@ -115,6 +115,8 @@ public class Home extends Finestra{
 	private void spingi (String urla, String messaggio) {
 		// TODO
 		 try {
+			 System.out.println(urla);
+			 
              Runtime rt = Runtime.getRuntime();
              
              setCurrentDirectory(urla);
