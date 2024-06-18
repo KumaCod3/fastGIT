@@ -37,6 +37,7 @@ public class Est {
 	public static Dimension jchoi=new Dimension((int)wi190,(int)he30);
 	public static Dimension err=new Dimension((int)wi310,(int)(he/1.8));
 	public static Dimension bigErr=new Dimension((int)wi310,(int)(he));
+	public static Dimension bigErrd=new Dimension((int)wi310,(int)(he/6*4));
 	public static int marginX=(int)((screenSize.getSize().getWidth()/2)-(standard.getSize().getWidth()/2));
 	public static int marginY=(int)((screenSize.getSize().getSize().getHeight()/2)-(standard.getSize().getHeight()/2));
 	public static int centPicX=(int)((screenSize.getSize().getWidth()/2)-wi190);
