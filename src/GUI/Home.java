@@ -83,7 +83,11 @@ public class Home extends Finestra{
 			Bottone rimuovi=new Bottone("DEL");
 			rimuovi.but.addActionListener(new ActionListener() {
 			    public void actionPerformed(ActionEvent e) {
-			    	// TODO
+			    	cancella(s.getKey());
+			    	Home home=new Home();
+			    	home.setVisible(true);
+			    	dispose();
+			    	
 				}
 			});
 			rmJPanel.add(rimuovi);
@@ -108,5 +112,10 @@ public class Home extends Finestra{
 	private void spingi (String urla) {
 		// TODO
 		
+	}
+	
+	private void cancella(String k) {
+		MainfastGIT.listaURList.remove(k);
+		MainfastGIT.scarica();
 	}
 }
