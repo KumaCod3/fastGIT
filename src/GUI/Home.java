@@ -121,18 +121,18 @@ public class Home extends Finestra{
              
              setCurrentDirectory(urla);
              Process pr = rt.exec("git add .");
-    //         Process pr = rt.exec("cd /d "+urla);
              BufferedReader input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
              String line=null;
-      /*       while((line=input.readLine()) != null) {
+             while((line=input.readLine()) != null) {
                  System.out.println(line);
              }
-             */
              
+             /*
+             pr =rt.exec("bla");
              input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
              while((line=input.readLine()) != null) {
             	 System.out.println(line);
-             }
+             }*/
              //
              pr = rt.exec("git commit -m "+messaggio);
              input = new BufferedReader(new InputStreamReader(pr.getInputStream()));
