@@ -17,7 +17,7 @@ It allows you to commit and push your changes to your project to your remote rep
 
 <a name="star"></a>
 ### Getting Started:
-Install the App: You will soon be able to download an .exe from here, or
+Install the App: You can download the file "FastGITv1.0.exe" from this repo, or
 you can download the source code and compile it yourself.
 
 <a name="pre"></a>
