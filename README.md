@@ -11,7 +11,7 @@
 
 <a name="over"></a>
 ### Overview:
-FastGIT is a simple tool designed to streamline the process of committing and pushing changes to your project. 
+FastGIT is a simple tool designed to streamline the process of committing and pushing changes to your project. A simplified version og Git GUI only for commit and push.
 This app is ideal for developers who need to manage their projects efficiently and quickly.
 It allows you to commit and push your changes to your project to your remote repository in a single click. You can add a commit message to describe the changes you made.
 
